@@ -1,0 +1,14 @@
+
+# Fichiers d'état local Terraform
+*.tfstate
+*.tfstate.*
+*.tfvars
+!*.tfvars.example
+
+# Dossier d'initialisation
+.terraform/
+.terraform.lock.hcl
+
+# OS / Éditeur
+.DS_Store
+.vscode/
