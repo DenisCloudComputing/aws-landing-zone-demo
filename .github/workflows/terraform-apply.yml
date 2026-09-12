@@ -1,0 +1,31 @@
+
+name: "Terraform Apply"
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  apply:
+    name: "Terraform Apply sur Main"
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: ./environments/dev
+
+    steps:
+      - name: Checkout du code
+        uses: actions/checkout@v4
+
+      - name: Configuration de Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.5.7
+
+      - name: Initialisation Terraform
+        run: terraform init -backend=false
+
+      - name: Validation du code
+        run: terraform validate
